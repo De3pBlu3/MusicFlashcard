@@ -29,26 +29,26 @@ public class homeScene extends Scene{
 
     public homeScene(Stage primaryStage) {
         super(new VBox(), 440, 250);
-        Intro.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 13));
-        Intro.setTextFill(Color.WHITE);
-        Intro.setBackground(transparentBackground);
-        Intro.setEffect(dropShadow);
-        Intro.setTextAlignment(TextAlignment.CENTER);
-        Intro.setAlignment(Pos.CENTER);
-        
-        loginButton.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
-        loginButton.setTextFill(Color.WHITE);
-        loginButton.setBackground(orangeBackground);
-        loginButton.setEffect(dropShadow);
-        loginButton.setTextAlignment(TextAlignment.CENTER);
-        loginButton.setAlignment(Pos.CENTER);
-        
-        signUpButton.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
-        signUpButton.setTextFill(Color.WHITE);
-        signUpButton.setBackground(orangeBackground);
-        signUpButton.setEffect(dropShadow);
-        signUpButton.setTextAlignment(TextAlignment.CENTER);
-        signUpButton.setAlignment(Pos.CENTER);
+//        Intro.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 13));
+//        Intro.setTextFill(Color.WHITE);
+//        Intro.setBackground(transparentBackground);
+//        Intro.setEffect(dropShadow);
+//        Intro.setTextAlignment(TextAlignment.CENTER);
+//        Intro.setAlignment(Pos.CENTER);
+//
+//        loginButton.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
+//        loginButton.setTextFill(Color.WHITE);
+//        loginButton.setBackground(orangeBackground);
+//        loginButton.setEffect(dropShadow);
+//        loginButton.setTextAlignment(TextAlignment.CENTER);
+//        loginButton.setAlignment(Pos.CENTER);
+//
+//        signUpButton.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
+//        signUpButton.setTextFill(Color.WHITE);
+//        signUpButton.setBackground(orangeBackground);
+//        signUpButton.setEffect(dropShadow);
+//        signUpButton.setTextAlignment(TextAlignment.CENTER);
+//        signUpButton.setAlignment(Pos.CENTER);
         
         //home layout
         GridPane homeLay = new GridPane();
@@ -64,9 +64,9 @@ public class homeScene extends Scene{
         });
 
         //General layout settings
-        homeLay.setStyle("-fx-background-color: #FFD966;");
+//        homeLay.setStyle("-fx-background-color: #FFD966;");
         homeLay.setPadding(offset);
-        homeLay.setVgap(10);
+        homeLay.setVgap(75);
         homeLay.setHgap(5);
         homeLay.setAlignment(Pos.CENTER);
         //Children addition and positioning

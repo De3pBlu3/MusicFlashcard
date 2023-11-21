@@ -27,10 +27,10 @@ public class loginScene extends Scene{
 	 Background orangeBackground = new Background(new BackgroundFill(Color.rgb(232, 123, 56), CornerRadii.EMPTY, javafx.geometry.Insets.EMPTY));
 	 DropShadow dropShadow = new DropShadow();
 	
-	Insets offset = new Insets(10,10,10,10);
+	Insets offset = new Insets(5,5,5,5);
     TextField usernameField = new TextField();
 
-    Button confirmButton = new Button("Confirm");
+    Button confirmButton = new Button("Login");
     
     Button ReturnsignUpButton = new Button("Back to Sign Up");
     
@@ -40,37 +40,40 @@ public class loginScene extends Scene{
     public loginScene(Stage primaryStage) {
         super(new VBox(), 450, 250);
 
-        confirmButton.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
-        confirmButton.setTextFill(Color.WHITE);
-        confirmButton.setBackground(orangeBackground);
-        confirmButton.setEffect(dropShadow);
+//        confirmButton.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
+//        confirmButton.setTextFill(Color.WHITE);
+//        confirmButton.setBackground(orangeBackground);
+//        confirmButton.setEffect(dropShadow);
         confirmButton.setTextAlignment(TextAlignment.CENTER);
-        
-        ReturnsignUpButton.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
-        ReturnsignUpButton.setTextFill(Color.WHITE);
-        ReturnsignUpButton.setBackground(orangeBackground);
-        ReturnsignUpButton.setEffect(dropShadow);
+        confirmButton.setAlignment(Pos.CENTER);
+//
+//        ReturnsignUpButton.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
+//        ReturnsignUpButton.setTextFill(Color.WHITE);
+//        ReturnsignUpButton.setBackground(orangeBackground);
+//        ReturnsignUpButton.setEffect(dropShadow);
         ReturnsignUpButton.setTextAlignment(TextAlignment.CENTER);
-        ReturnsignUpButton.setAlignment(Pos.CENTER);
-
-        usernameField.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
-        usernameField.setEffect(dropShadow);
+        ReturnsignUpButton.setAlignment(Pos.BOTTOM_LEFT);
+//
+//        usernameField.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
+//        usernameField.setEffect(dropShadow);
         usernameField.setAlignment(Pos.CENTER);
-        
-        passwordField.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
-        passwordField.setEffect(dropShadow);
+//
+//        passwordField.setFont(Font.font("ADLam Display", FontWeight.NORMAL, 10));
+//        passwordField.setEffect(dropShadow);
         passwordField.setAlignment(Pos.CENTER);
         
         //Login layout
         GridPane LoginLay = new GridPane();
         //General layout settings
-        LoginLay.setStyle("-fx-background-color: #FFD966;");
+//        LoginLay.setStyle("-fx-background-color: #FFD966;");
+
         LoginLay.setPadding(offset);
-        LoginLay.setVgap(10);
-        LoginLay.setHgap(5);
-        LoginLay.setAlignment(Pos.CENTER);
+        LoginLay.setVgap(25);
+        LoginLay.setHgap(3);
+        LoginLay.setAlignment(Pos.TOP_CENTER);
+        LoginLay.setHalignment(ReturnsignUpButton, HPos.LEFT);
+        LoginLay.setHalignment(confirmButton, HPos.CENTER);
         //Children addition and positioning
-        LoginLay.setConstraints(ReturnsignUpButton, 2 , 4);
         ReturnsignUpButton.setOnAction(e -> {
             Stage stage = (Stage) ReturnsignUpButton.getScene().getWindow();
             stage.setScene(signupScene.createScene(stage));
@@ -83,12 +86,24 @@ public class loginScene extends Scene{
         passwordField.setPromptText("Password");
 
 
+//        LoginLay.setConstraints(confirmButton, 2, 3);
+//
+//        LoginLay.setConstraints(ReturnsignUpButton, 2 , 3);
+
+        // set the buttons to be next to each other
+        LoginLay.setConstraints(ReturnsignUpButton, 1, 4);
         LoginLay.setConstraints(confirmButton, 2, 3);
+
+        // set the buttons to be same width
+        confirmButton.setMaxWidth(Double.MAX_VALUE);
+        ReturnsignUpButton.setMaxWidth(Double.MAX_VALUE);
+        
+
         confirmButton.setOnAction(e -> {
             String user = usernameField.getText(); 		//Changes user input into String to check in db
             String pass = passwordField.getText();
 
-            if (DB_UserInteract.loginCheck(user, pass) == false) { 	//Checks whether user name and password exists
+            if (!DB_UserInteract.loginCheck(user, pass)) { 	//Checks whether user name and password exists
                 colorChange(usernameField, passwordField);			//If it doesnt exist then go red
                 System.out.print("Username or password does not match. Try again"); //loop continues
             }else {

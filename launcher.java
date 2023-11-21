@@ -1,5 +1,6 @@
 
 import javafx.application.Application; //Setting up!! Make sure you dont have src folder and that when making package, you click the second option
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 	//Scenes = start lowercase
@@ -10,7 +11,6 @@ import javafx.stage.Stage;
 
 		static String user_ID;
 		public static void main(String[] args) {
-			// TODO Auto-generated method stub
 			// init db
 			Questions.main(args);
 			launch(args);  //method in application class that sets up javafx app (setup)
@@ -19,10 +19,11 @@ import javafx.stage.Stage;
 		@Override
 		public void start(Stage window) throws Exception {
 			window.setTitle("CUiz"); //Window title
+			Scene scene = FXMLloader.loadScene("FXML/Landingpage.fxml");
 
+			Application.setUserAgentStylesheet("theme/nord-dark.css");      // set the theme!
 
-			//MainQuiz layout
-			window.setScene(homeScene.createScene(window));
+			window.setScene(scene);
 			window.show();
 
 		}

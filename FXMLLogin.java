@@ -14,8 +14,9 @@ public class FXMLLogin extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = FXMLloader.loadScene("FXML/Login.fxml");
+        Scene scene = FXMLloader.loadScene("FXML/Signup.fxml");
 
+        Application.setUserAgentStylesheet("theme/nord-dark.css");      // set the theme!
 
 
 //        ReturnsignUpButton.setOnAction(e -> {

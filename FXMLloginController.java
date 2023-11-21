@@ -24,10 +24,10 @@ public class FXMLloginController {
     @FXML
     public void initialize() {
         loginConfirmButton.setOnAction(this::confirmLogin);
-        signUpButton.setOnAction(e -> {
+        signUpButton.setOnAction(e ->  {
             Stage stage = (Stage) signUpButton.getScene().getWindow();
             try {
-                stage.setScene(signupScene.createScene(stage));
+                stage.setScene(FXMLloader.loadScene("FXML/Signup.fxml"));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

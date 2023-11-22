@@ -12,7 +12,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.Objects;
 
-public class FXMLSignupController {
+public class FXMLsignupController {
 
     public PasswordField passwordField;
     public PasswordField confirmPassword;
@@ -20,6 +20,7 @@ public class FXMLSignupController {
     public TextField usernameField;
     public Button createAccountButton;
     public Button loginButton;
+    public Button backButton;
 
     Popup existingUserPopup = new Popup() ;
     Label existingUserPLabel = new Label("Something has gone wrong, most likely the username already exists. Try again. ");
@@ -64,6 +65,14 @@ public class FXMLSignupController {
             Stage stage = (Stage) loginButton.getScene().getWindow();
             try {
                 stage.setScene(FXMLloader.loadScene("FXML/login.fxml"));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        backButton.setOnAction(e -> {
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            try {
+                stage.setScene(FXMLloader.loadScene("FXML/Landingpage.fxml"));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

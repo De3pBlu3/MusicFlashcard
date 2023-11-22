@@ -1,14 +1,20 @@
+import javafx.animation.FillTransition;
 import javafx.animation.KeyFrame;
+import javafx.animation.ParallelTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.ColorAdjust;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class FXMLloginController {
+    @FXML
+    public Button backButton;
+
         @FXML
         private Button loginConfirmButton;
         @FXML
@@ -19,7 +25,7 @@ public class FXMLloginController {
         private Button signUpButton;
 
 
-        // on login button click
+    // on login button click
 
     @FXML
     public void initialize() {
@@ -28,6 +34,15 @@ public class FXMLloginController {
             Stage stage = (Stage) signUpButton.getScene().getWindow();
             try {
                 stage.setScene(FXMLloader.loadScene("FXML/Signup.fxml"));
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        backButton.setOnAction(e -> {
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            try {
+                stage.setScene(FXMLloader.loadScene("FXML/Landingpage.fxml"));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -67,6 +82,7 @@ public class FXMLloginController {
                     usernameField.setStyle("");
                     passwordField.setStyle("");
                 }));
+
         colorChangeTimeline.setCycleCount(1); //How many times it plays the sequence
         colorChangeTimeline.playFromStart(); //play
 

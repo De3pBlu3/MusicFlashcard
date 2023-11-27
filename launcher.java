@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 	public class launcher extends Application {
 
 		static String user_ID;
+		static int lastScore;
 		public static void main(String[] args) {
 			// init db
 			Questions.main(args);
@@ -20,7 +21,7 @@ import javafx.stage.Stage;
 		public void start(Stage window) throws Exception {
 			window.setTitle("CUiz"); //Window title
 			Scene scene = FXMLloader.loadScene("FXML/Landingpage.fxml");
-
+//			Scene scene = statGUI.createScene(window);
 			Application.setUserAgentStylesheet("theme/nord-dark.css");      // set the theme!
 
 			window.setScene(scene);

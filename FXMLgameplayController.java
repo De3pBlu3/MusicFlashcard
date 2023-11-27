@@ -14,6 +14,8 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
+
 public class FXMLgameplayController {
     static int gamemodeInt = 0;
     card[] cards_array;
@@ -100,9 +102,14 @@ public class FXMLgameplayController {
                 ++i;
             } else {
                 DB_PlayHistory.addHistory(launcher.user_ID, score, wins, losses);
-                stage.setScene(postgameScene.createScene(stage, score));
-                stage.setFullScreen(true);
-                resetScore();
+                try {
+                    launcher.lastScore = score;
+                    resetScore();
+                    stage.setScene(FXMLloader.loadScene("FXML/Postgame.fxml"));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
 
             System.out.println(score);
@@ -129,6 +136,29 @@ public class FXMLgameplayController {
             }
 
         });
+
+        ans1Checkbox.setOnAction(e -> {
+            ans2Checkbox.setSelected(false);
+            ans3Checkbox.setSelected(false);
+            ans4Checkbox.setSelected(false);
+        });
+        ans2Checkbox.setOnAction(e -> {
+            ans1Checkbox.setSelected(false);
+            ans3Checkbox.setSelected(false);
+            ans4Checkbox.setSelected(false);
+        });
+        ans3Checkbox.setOnAction(e -> {
+            ans1Checkbox.setSelected(false);
+            ans2Checkbox.setSelected(false);
+            ans4Checkbox.setSelected(false);
+        });
+        ans4Checkbox.setOnAction(e -> {
+            ans1Checkbox.setSelected(false);
+            ans2Checkbox.setSelected(false);
+            ans3Checkbox.setSelected(false);
+        });
+
+
     }
 
     public static void shuffle_array(card[] cards_array) {

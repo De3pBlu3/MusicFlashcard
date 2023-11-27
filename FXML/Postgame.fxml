@@ -33,13 +33,13 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label fx:id="scorelabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="35.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Label fx:id="scorelabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="131.0" prefWidth="209.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Button fx:id="mainMenuButton" mnemonicParsing="false" text="Return to main menu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-            <Button fx:id="statButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Statistics" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <Button fx:id="statButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Statistics" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Button fx:id="mainMenuButton" mnemonicParsing="false" text="Return to main menu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
          </children>
       </GridPane>
    </children>

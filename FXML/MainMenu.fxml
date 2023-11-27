@@ -38,7 +38,7 @@
             </Button>
             <ImageView fitHeight="71.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <image>
-                  <Image url="CUiz Logo.png" />
+                  <Image url="FXML/CUiz Logo.png" />
                </image>
             </ImageView>
          </children>

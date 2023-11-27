@@ -45,7 +45,7 @@ public class FXMLmainMenuController {
             System.out.println("Playing");
             try {
                 Stage stage = (Stage) playButton.getScene().getWindow();
-                stage.setScene(FXMLloader.loadScene("FXML/Playmodes.fxml"));
+                stage.setScene(FXMLloader.loadScene("FXML/Gamemode.fxml"));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

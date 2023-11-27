@@ -8,10 +8,10 @@ public class DB_CardInteract {
     public static int amountOfCardsTotal() {
         String cards_amount_sql = "SELECT COUNT(*) FROM cards";
 
-        try (Connection conn = DB_ConnCreator.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(cards_amount_sql)) {
-
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(cards_amount_sql);
             return rs.getInt("COUNT(*)");
 
         } catch (SQLException e) {
@@ -24,9 +24,10 @@ public class DB_CardInteract {
     public static int amountOfCardsWithWhere(String whereClause) {
         String cards_amount_sql = "SELECT COUNT(*) FROM cards WHERE " + whereClause;
 
-        try (Connection conn = DB_ConnCreator.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(cards_amount_sql)) {
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(cards_amount_sql);
 
             return rs.getInt("COUNT(*)");
 
@@ -42,9 +43,10 @@ public class DB_CardInteract {
 
         int numberOfCards = amountOfCardsTotal();
 
-        try (Connection conn = DB_ConnCreator.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
 
             if (rs == null) {
                 System.out.println("No cards in DB");
@@ -73,9 +75,9 @@ public class DB_CardInteract {
 
         int numberOfCards = amountOfCardsTotal();
 
-        try (Connection conn = DB_ConnCreator.connect();
-             java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
             // set the value
             pstmt.setString(1, user_id);
             //
@@ -107,9 +109,10 @@ public class DB_CardInteract {
 
         int numberOfCards = amountOfCardsTotal();
 
-        try (Connection conn = DB_ConnCreator.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+        try{
+            Connection conn = DB_ConnCreator.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
 
             if (rs == null) {
                 System.out.println("No cards in DB");
@@ -136,8 +139,9 @@ public class DB_CardInteract {
         // returns all cards with the given ID
         String sql = "SELECT card_id, question, answers, correct_answer_index, category, difficulty FROM cards WHERE card_id = ?";
 
-        try (Connection conn = DB_ConnCreator.connect();
-             java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
 
             // set the value
             pstmt.setString(1, cardID);
@@ -170,9 +174,9 @@ public class DB_CardInteract {
         int numberOfCards = amountOfCardsWithWhere("difficulty = " + "\"" + difficulty + "\"");
 
 
-        try (Connection conn = DB_ConnCreator.connect();
-             java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
             // set the value
             pstmt.setString(1, String.valueOf(difficulty));
             //
@@ -205,8 +209,9 @@ public class DB_CardInteract {
         int numberOfCards = amountOfCardsWithWhere("category = " + "\"" + category + "\"");
 
 
-        try (Connection conn = DB_ConnCreator.connect();
-             java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
 
             // set the value
             pstmt.setString(1, String.valueOf(category));
@@ -238,8 +243,9 @@ public class DB_CardInteract {
     public static void addCardToDB(card card_object) {
         String sql = "INSERT INTO cards(card_id,question,answers,correct_answer_index,category,difficulty) VALUES(?,?,?,?,?,?)";
 
-        try (Connection conn = DB_ConnCreator.connect();
-             java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try  {
+            Connection conn = DB_ConnCreator.connect();
+            java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, card_object.card_id);
             pstmt.setString(2, card_object.Question_content);
             pstmt.setString(3, card_object.Question_answers_original);

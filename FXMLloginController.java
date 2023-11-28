@@ -13,23 +13,24 @@ import javafx.util.Duration;
 
 public class FXMLloginController {
     @FXML
-    public Button backButton;
+    private Button backButton;
 
-        @FXML
-        private Button loginConfirmButton;
-        @FXML
-        private TextField usernameField;
-        @FXML
-        private PasswordField passwordField;
-        @FXML
-        private Button signUpButton;
+    @FXML
+    private Button loginConfirmButton;
 
+    @FXML
+    private TextField usernameField;
 
-    // on login button click
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Button signUpButton;
 
     @FXML
     public void initialize() {
         loginConfirmButton.setOnAction(this::confirmLogin);
+
         signUpButton.setOnAction(e ->  {
             Stage stage = (Stage) signUpButton.getScene().getWindow();
             try {
@@ -51,18 +52,18 @@ public class FXMLloginController {
 
     @FXML
     public void confirmLogin(ActionEvent event) {
-        String user = usernameField.getText();        //Changes user input into String to check in db
+        String user = usernameField.getText();
         String pass = passwordField.getText();
 
-        if (!DB_UserInteract.loginCheck(user, pass)) {    //Checks whether user name and password exists
-            colorChange(usernameField, passwordField);            //If it doesnt exist then go red
-            System.out.println("Username or password does not match. Try again"); //loop continues
-        } else {
+        if (!DB_UserInteract.loginCheck(user, pass)) {
+            colorChange(usernameField, passwordField);
+            System.out.println("Username or password does not match. Try again");
+        }
+        else {
             System.out.println("Successful login");
             launcher.user_ID = user;
             Stage stage = (Stage) loginConfirmButton.getScene().getWindow();
             try {
-
                 stage.setScene(FXMLloader.loadScene("FXML/MainMenu.fxml"));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -72,7 +73,7 @@ public class FXMLloginController {
 
 
     public static void colorChange(TextField usernameField, PasswordField passwordField) {
-        Timeline colorChangeTimeline = new Timeline( //To store keyframes
+        Timeline colorChangeTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(0), e -> { // Change the text field's background color for 2 seconds
                     usernameField.setStyle("-fx-background-color: red;");
                     passwordField.setStyle("-fx-background-color: red;");

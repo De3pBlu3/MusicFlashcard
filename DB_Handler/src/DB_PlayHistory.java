@@ -21,9 +21,10 @@ public class DB_PlayHistory {
     public static int amountOfHistory() {
         String sql = "SELECT COUNT(*) FROM play_history";
 
-        try (Connection conn = DB_ConnCreator.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql);
             return rs.getInt(1);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -35,9 +36,10 @@ public class DB_PlayHistory {
     public static int amountOfHistoryWithWhere(String whereClause) {
         String sql = "SELECT COUNT(*) FROM play_history WHERE " + whereClause;
 
-        try (Connection conn = DB_ConnCreator.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql);
             return rs.getInt(1);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -51,9 +53,9 @@ public class DB_PlayHistory {
 
         int numberOfHistory = amountOfHistory();
 
-        try (Connection conn = DB_ConnCreator.connect();
-             java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
             if (numberOfHistory == 0) {
@@ -83,8 +85,9 @@ public class DB_PlayHistory {
 
         int numberOfHistory = amountOfHistoryWithWhere("user_ID = '" + user_id + "'");
 
-        try (Connection conn = DB_ConnCreator.connect();
-             java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = DB_ConnCreator.connect();
+            java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, user_id);
             ResultSet rs = pstmt.executeQuery();
